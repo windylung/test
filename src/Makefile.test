@@ -1,0 +1,20 @@
+# 컴파일러 및 플래그
+CXX = g++
+CXXFLAGS = -std=c++11 -Wall -g
+
+# 파일 이름
+TARGET = test_skiplist
+SRC = skiplist_test_personal.cc
+OBJS = $(SRC:.cc=.o)
+
+# 타겟: 실행 파일 만들기
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+
+# 개별 오브젝트 파일 만들기
+%.o: %.cc
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# 정리
+clean:
+	rm -f $(TARGET) $(OBJS)
